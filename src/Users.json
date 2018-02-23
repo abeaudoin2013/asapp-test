@@ -3,6 +3,7 @@
     "Id": 12345,
     "firstName": "Alex",
     "lastName": "Schultz",
+    "userName": "sc00pad00pd00p",
     "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut sapien orci. Phasellus mattis non justo ac finibus. Vivamus est nibh, tincidunt vel tellus nec, pharetra convallis ipsum. Suspendisse porttitor tellus risus, nec sollicitudin nisl faucibus eu. Curabitur convallis lectus nec porta vehicula. Praesent condimentum rutrum eros et ultrices. Ut non neque quis orci aliquam mattis vel vitae enim. Nam blandit nibh a magna sagittis efficitur. Nulla congue libero lobortis nulla bibendum, eu cursus enim cursus. Duis sit amet mollis metus. Mauris sed commodo diam. Aenean non vehicula nisl, sed auctor nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;",
     "avatar": "https://api.adorable.io/avatars/285/alex@adorable.io.png"
   },
@@ -10,6 +11,7 @@
     "Id": 678910,
     "firstName": "Tim",
     "lastName": "Cuevas",
+    "userName": "first-come-first-serve",
     "bio": "In dictum mattis sem in scelerisque. Proin quis turpis ut mauris rhoncus posuere. Mauris vitae justo a risus pulvinar feugiat. Donec risus lacus, consectetur ut luctus id, auctor nec libero. Aenean nunc neque, fermentum vel blandit quis, fermentum a turpis. Donec vel placerat massa. Nam commodo nulla justo, vel dapibus odio elementum auctor. Praesent ornare, urna in molestie tempor, dui augue dapibus diam, ac posuere nulla enim sed metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin eu fringilla sapien. Cras vehicula facilisis ultrices. Maecenas elit eros, auctor eget vulputate eu, cursus non nisi. Suspendisse malesuada sapien nibh, ut placerat eros efficitur nec",
     "avatar": "https://api.adorable.io/avatars/285/Cuevas@adorable.io.png"
   }

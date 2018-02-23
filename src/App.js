@@ -12,8 +12,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Chat user={this.state.users[0]}/>
-        <Chat user={this.state.users[1]}/>
+        <div className="container">
+          <Chat user={this.state.users[0]} chatee={this.state.users[1]}/>
+          <Chat user={this.state.users[1]} chatee={this.state.users[0]}/>
+        </div>
       </div>
     );
   }

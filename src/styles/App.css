@@ -1,3 +1,37 @@
+.Chat {
+  display: inline-block;
+  text-align: left;
+  width: 95%;
+  margin: 0 auto 25px auto;
+  padding: 15px; }
+  @media screen and (min-width: 450px) {
+    .Chat {
+      width: 50%;
+      max-width: 600px;
+      vertical-align: top; }
+      .Chat:first-child {
+        padding-right: 20px;
+        border-right: 1px solid #ccc; }
+      .Chat:last-child {
+        padding-left: 20px; } }
+  .Chat .container {
+    width: 95%;
+    margin: 0 auto;
+    text-align: left; }
+    .Chat .container .--input {
+      width: 100%;
+      border: 2px solid #353b40;
+      height: 55px;
+      font-size: 1em;
+      border-radius: 5px;
+      padding: 5px;
+      box-sizing: border-box;
+      outline: none;
+      position: relative; }
+
 body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-family: "Helvetica", sans-serif; }
+  body .container {
+    text-align: center; }
