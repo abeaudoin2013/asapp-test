@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Chat from './components/Chat';
+import Conversation from './components/Conversation';
 import Users from './Users.json';
 import './styles/App.css';
 
@@ -13,8 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <Chat user={this.state.users[0]} chatee={this.state.users[1]}/>
-          <Chat user={this.state.users[1]} chatee={this.state.users[0]}/>
+          <Conversation users={this.state.users}/>
         </div>
       </div>
     );

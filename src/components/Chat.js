@@ -8,7 +8,7 @@ class Chat extends Component {
     this.state = {};
     this.state.user = props.user;
     this.state.chatee = props.chatee;
-    this.state.conversation = [];
+    this.state.conversation = props.conversation;
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
   }
@@ -23,9 +23,7 @@ class Chat extends Component {
       };
       c.push(b);
       e.target.value = "";
-      this.setState({
-        conversation: c
-      });
+      this.props.updateConversation(b);
     }
   }
   render() {
