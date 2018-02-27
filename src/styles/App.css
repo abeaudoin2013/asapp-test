@@ -28,6 +28,11 @@
       box-sizing: border-box;
       outline: none;
       position: relative; }
+  .Chat .clearfix {
+    clear: both; }
+
+.fromSameUser {
+  text-align: right; }
 
 body {
   width: 100%;

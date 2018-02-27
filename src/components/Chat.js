@@ -29,18 +29,17 @@ class Chat extends Component {
   render() {
 
     let messages = _.map(this.state.conversation, (v, i) => {
-      return <Message key={"Message-" + i} message={v}/>
+      return <Message key={"Message-" + i} message={v} user={this.state.user} chatee={this.state.chatee}/>
     });
 
     return (
       <div className="Chat">
-        <p>You are {this.state.user.firstName} {this.state.user.lastName}</p>
+        {/*<p>You are {this.state.user.firstName} {this.state.user.lastName}</p>*/}
         <div className="container">
           <p>You are chatting with {this.state.chatee.userName}</p>
-        </div>
-        {messages}
-        <div className="container">
+          {messages}
           <input type="text" className={"--input"} placeholder={"Message " + this.state.chatee.userName} onKeyUp={(e)=>{this.handleKeyUp(e)}}/>
+          <div className="clearfix" />
         </div>
       </div>
     );
