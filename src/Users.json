@@ -2,19 +2,19 @@
   {
     "Id": 12345,
     "firstName": "Laura",
-    "lastName": "Schultz",
+    "lastName": "Dern",
     "userName": "Laura-1",
     "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut sapien orci.",
-    "avatar": "https://api.adorable.io/avatars/285/alex@adorable.io.png",
+    "avatar": "https://media.newyorker.com/photos/59b998f6a671a51f41167dab/master/w_649,c_limit/Petrusich-I-Also-Look-Like-Laura-Dern.jpg",
     "isTyping": false
   },
   {
     "Id": 678910,
     "firstName": "Rob",
-    "lastName": "Cuevas",
+    "lastName": "Thomas",
     "userName": "Rob-1",
     "bio": "In dictum mattis sem in scelerisque. Proin quis turpis ut mauris rhoncus posuere.",
-    "avatar": "https://api.adorable.io/avatars/285/Cuevas@adorable.io.png",
+    "avatar": "https://cbsradionews.files.wordpress.com/2016/04/rob-thomas-getty-946.jpg?w=640&h=360&crop=1",
     "isTyping": false
   }
 ]

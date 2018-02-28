@@ -14,13 +14,3 @@ body {
     text-align: center;
   }
 }
-.Avatar {
-  display: inline-block;
-  width: 10%;
-  max-width: 30px;
-  cursor: pointer;
-  height: 30px;
-  img {
-    @include border-radius(5px);
-  }
-}

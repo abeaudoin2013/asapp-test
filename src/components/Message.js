@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-flexbox-grid';
 import Moment from 'react-moment';
 
 class Message extends Component {
   render() {
     return (
-      <div className={this.props.message.sender.userName === this.props.user.userName ? "Message --fromUser" : "Message --fromChatee"}>
-        <div className={"--container"}>
+      <Row>
+        <Col xs={12} sm={12} mdOffset={this.props.message.sender.userName === this.props.user.userName ? 6 : 0} md={6} lgOffset={this.props.message.sender.userName === this.props.user.userName ? 6 : 0} lg={6}>
+          <div className={this.props.message.sender.userName === this.props.user.userName ? "Message --fromUser" : "Message --fromChatee"}>
+            <div className={"--container"}>
 
-          <div className={"Avatar item"} onClick={(e)=>{this.props.toggleProfile(e, this.props.message.sender)}}>
-            <img src={this.props.message.sender.avatar} alt={this.props.message.sender.userName} width={"100%"}/>
-          </div>
 
-          <div className={"Content item"}>
-            <div className="--sender">
-              <span className={"UserName item"}>{this.props.message.sender.userName}</span>
-              <span className={"Time item"}><Moment format={"h:mm a"}>{this.props.message.date}</Moment></span>
+              <div className={"Content item"}>
+                <div className="--sender">
+                  <span className={"UserName item"} onClick={(e)=>{this.props.toggleProfile(e, this.props.message.sender)}}>{this.props.message.sender.userName}</span>
+                  <span className={"Time item"}><Moment format={"h:mm a"}>{this.props.message.date}</Moment></span>
+                </div>
+                <p className="--message">{this.props.message.text}</p>
+              </div>
+
             </div>
-            <p className="--message">{this.props.message.text}</p>
+
           </div>
-
-        </div>
-
-      </div>
+        </Col>
+      </Row>
     );
   }
 }

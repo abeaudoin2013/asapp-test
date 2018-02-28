@@ -60,11 +60,15 @@ class Chat extends Component {
 
           <div className="Intro">
             <Row>
+              <Col xs={12} sm={12} md={12} lg={12}>
+                <div className={"-Greeting"}>Hey, <b onClick={(e) => {this.props.toggleProfile(e, this.props.user)}}>{this.props.user.firstName}</b></div>
+              </Col>
+            </Row>
+            <Row>
               <Col xs={3} sm={3} md={3} lg={3}>
                 <img src={this.props.chatee.avatar} className={"-Avatar"} width={"100%"} onClick={(e) => {this.props.toggleProfile(e, this.props.chatee)}} alt={this.props.chatee.userName}/>
               </Col>
               <Col xs={9} sm={9} md={9} lg={9}>
-                <div>Hey, <b onClick={(e) => {this.props.toggleProfile(e, this.props.user)}}>{this.props.user.firstName}</b></div>
                 <p>You are chatting with . . .</p>
                 <div className={"About"}>
                   <div className={"-UserName"} onClick={(e) => {this.props.toggleProfile(e, this.props.chatee)}}>{this.props.chatee.userName}</div>

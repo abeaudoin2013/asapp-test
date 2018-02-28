@@ -3,17 +3,11 @@
   height: auto;
   padding: 15px;
   border-right: none;
-  &:first-child {
-    border-right: none;
-  }
   @media screen and (min-width: 767px) {
     min-height: 100vh;
-    &:first-child {
-      padding-right: 20px;
-      border-right: 1px solid #ccc;
-    }
     &:last-child {
       padding-left: 20px;
+      border-right: none;
     }
   }
   .--container {
@@ -24,6 +18,9 @@
       margin: 0 0 25px 0;
       border-bottom: 1px solid #ccc;
       padding: 0 0 15px 0;
+      .-Greeting {
+        margin: 0 0 15px 0;
+      }
       .-Avatar {
         cursor: pointer;
         @include border-radius(5px);

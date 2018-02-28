@@ -6,16 +6,12 @@
   height: auto;
   padding: 15px;
   border-right: none; }
-  .Chat:first-child {
-    border-right: none; }
   @media screen and (min-width: 767px) {
     .Chat {
       min-height: 100vh; }
-      .Chat:first-child {
-        padding-right: 20px;
-        border-right: 1px solid #ccc; }
       .Chat:last-child {
-        padding-left: 20px; } }
+        padding-left: 20px;
+        border-right: none; } }
   .Chat .--container {
     width: 95%;
     margin: 0 auto;
@@ -24,6 +20,8 @@
       margin: 0 0 25px 0;
       border-bottom: 1px solid #ccc;
       padding: 0 0 15px 0; }
+      .Chat .--container .Intro .-Greeting {
+        margin: 0 0 15px 0; }
       .Chat .--container .Intro .-Avatar {
         cursor: pointer;
         -webkit-border-radius: 5px;
@@ -55,14 +53,17 @@
       position: relative; }
 
 .Message {
-  margin: 0 0 15px 0; }
+  margin: 0 0 15px 0;
+  padding: 15px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */ }
   .Message .--container {
     width: 100%; }
     .Message .--container .item {
       vertical-align: top; }
     .Message .--container .Content {
-      display: inline-block;
-      width: 90%;
       padding: 0 5px 0 15px;
       box-sizing: border-box; }
       .Message .--container .Content .--sender .Time {
@@ -74,6 +75,40 @@
       .Message .--container .Content .--message {
         margin: 5px 0;
         overflow-wrap: break-word; }
+
+.--fromUser {
+  position: relative;
+  background-color: rgba(219, 192, 102, 0.64); }
+  .--fromUser:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 17px solid transparent;
+    border-left-color: rgba(219, 192, 102, 0.64);
+    border-right: 0;
+    border-bottom: 0;
+    margin-top: -8.5px;
+    margin-right: -17px; }
+
+.--fromChatee {
+  position: relative;
+  background-color: rgba(128, 128, 128, 0.64); }
+  .--fromChatee:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 17px solid transparent;
+    border-right-color: rgba(128, 128, 128, 0.64);
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -8.5px;
+    margin-left: -17px; }
 
 @-webkit-keyframes fade-in {
   0% {
@@ -133,15 +168,3 @@ body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif; }
   body .container {
     text-align: center; }
-
-.Avatar {
-  display: inline-block;
-  width: 10%;
-  max-width: 30px;
-  cursor: pointer;
-  height: 30px; }
-  .Avatar img {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    background-clip: padding-box;
-    /* stops bg color from leaking outside the border: */ }
