@@ -14,11 +14,23 @@
         border-right: 1px solid #ccc; }
       .Chat:last-child {
         padding-left: 20px; } }
-  .Chat .container {
+  .Chat .--container {
     width: 95%;
     margin: 0 auto;
     text-align: left; }
-    .Chat .container .--input {
+    .Chat .--container .Intro {
+      margin: 0 0 25px 0;
+      border-bottom: 1px solid #ccc;
+      padding: 0 0 15px 0; }
+      .Chat .--container .Intro .Avatar {
+        vertical-align: middle; }
+      .Chat .--container .Intro .UserName {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 15px; }
+      .Chat .--container .Intro p {
+        margin: 0 0 10px 0; }
+    .Chat .--container .Input {
       width: 100%;
       border: 2px solid #353b40;
       height: 55px;
@@ -28,11 +40,24 @@
       box-sizing: border-box;
       outline: none;
       position: relative; }
-  .Chat .clearfix {
-    clear: both; }
 
-.fromSameUser {
-  text-align: right; }
+.Message {
+  margin: 0 0 15px 0; }
+  .Message .--container {
+    width: 100%; }
+    .Message .--container .item {
+      vertical-align: top; }
+    .Message .--container .Content {
+      display: inline-block;
+      width: 90%;
+      padding: 0 5px 0 15px;
+      box-sizing: border-box; }
+      .Message .--container .Content .--sender .Time {
+        margin: 0 5px 0 0; }
+      .Message .--container .Content .--sender .UserName {
+        color: #263238; }
+      .Message .--container .Content .--message {
+        margin: 5px 0; }
 
 body {
   width: 100%;
@@ -40,3 +65,11 @@ body {
   font-family: "Helvetica", sans-serif; }
   body .container {
     text-align: center; }
+
+.Avatar {
+  display: inline-block;
+  width: 10%;
+  max-width: 30px;
+  height: 30px; }
+  .Avatar img {
+    border-radius: 5px; }

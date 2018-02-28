@@ -1,3 +1,28 @@
-.fromSameUser {
-  text-align: right;
+.Message {
+  margin: 0 0 15px 0;
+  .--container {
+    width: 100%;
+    .item {
+      vertical-align: top;
+    }
+
+    .Content {
+      display: inline-block;
+      width: 90%;
+      padding: 0 5px 0 15px;
+      box-sizing: border-box;
+      .--sender {
+        .Time {
+          margin: 0 5px 0 0;
+        }
+        .UserName {
+          color: #263238;
+        }
+      }
+      .--message {
+        margin: 5px 0;
+      }
+    }
+
+  }
 }

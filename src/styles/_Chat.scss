@@ -16,11 +16,27 @@
       padding-left: 20px;
     }
   }
-  .container {
+  .--container {
     width: 95%;
     margin: 0 auto;
     text-align: left;
-    .--input {
+    .Intro {
+      margin: 0 0 25px 0;
+      border-bottom: 1px solid #ccc;
+      padding: 0 0 15px 0;
+      .Avatar {
+        vertical-align: middle;
+      }
+      .UserName {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0 0 15px;
+      }
+      p {
+        margin: 0 0 10px 0;
+      }
+    }
+    .Input {
       width: 100%;
       border: 2px solid #353b40;
       height: 55px;
@@ -32,7 +48,5 @@
       position: relative;
     }
   }
-  .clearfix {
-    clear: both;
-  }
+
 }

@@ -11,3 +11,12 @@ body {
     text-align: center;
   }
 }
+.Avatar {
+  display: inline-block;
+  width: 10%;
+  max-width: 30px;
+  height: 30px;
+  img {
+    border-radius: 5px;
+  }
+}
