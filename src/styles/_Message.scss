@@ -13,14 +13,17 @@
       box-sizing: border-box;
       .--sender {
         .Time {
-          margin: 0 5px 0 0;
+          font-size: $smaller;
         }
         .UserName {
           color: #263238;
+          font-weight: 700;
+          margin: 0 5px 0 0;
         }
       }
       .--message {
         margin: 5px 0;
+        overflow-wrap: break-word;
       }
     }
 

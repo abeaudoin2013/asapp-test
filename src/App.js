@@ -12,9 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <Conversation users={this.state.users}/>
-        </div>
+        <Conversation users={this.state.users}/>
       </div>
     );
   }

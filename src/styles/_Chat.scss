@@ -1,13 +1,13 @@
 .Chat {
-  display: inline-block;
   text-align: left;
-  width: 95%;
-  margin: 0 auto 25px auto;
+  height: auto;
   padding: 15px;
-  @media screen and (min-width: 450px) {
-    width: 50%;
-    max-width: 600px;
-    vertical-align: top;
+  border-right: none;
+  &:first-child {
+    border-right: none;
+  }
+  @media screen and (min-width: 767px) {
+    min-height: 100vh;
     &:first-child {
       padding-right: 20px;
       border-right: 1px solid #ccc;
@@ -24,13 +24,20 @@
       margin: 0 0 25px 0;
       border-bottom: 1px solid #ccc;
       padding: 0 0 15px 0;
-      .Avatar {
-        vertical-align: middle;
+      .-Avatar {
+        cursor: pointer;
+        @include border-radius(5px);
       }
-      .UserName {
+      .About {
         display: inline-block;
         vertical-align: middle;
-        margin: 0 0 0 15px;
+        .-UserName {
+          cursor: pointer;
+          font-weight: 700;
+        }
+        .-FullName {
+          font-size: $smaller;
+        }
       }
       p {
         margin: 0 0 10px 0;
@@ -41,7 +48,7 @@
       border: 2px solid #353b40;
       height: 55px;
       font-size: 1em;
-      border-radius: 5px;
+      @include border-radius(5px);
       padding: 5px;
       box-sizing: border-box;
       outline: none;

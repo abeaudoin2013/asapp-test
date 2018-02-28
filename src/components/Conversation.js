@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-// import update from 'immutability-helper';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import Chat from "./Chat";
 
 class Conversation extends Component {
@@ -9,9 +9,16 @@ class Conversation extends Component {
     this.state = {};
     this.state.users = props.users;
     this.state.conversation = [];
+    this.state.showProfile = {
+      show: false,
+      profile: ""
+    };
+    this.state.coordinates = {};
 
     this.updateConversation = this.updateConversation.bind(this);
     this.updateTyping = this.updateTyping.bind(this);
+    this.toggleProfile = this.toggleProfile.bind(this);
+    this.handleClickOutsideProfile = this.handleClickOutsideProfile.bind(this);
 
   }
   updateConversation(arg1) {
@@ -36,21 +43,55 @@ class Conversation extends Component {
     });
 
   }
+  toggleProfile(e, profile) {
+    console.log("toggle prof");
+    this.setState({
+      showProfile: {
+        show: !this.state.showProfile.show,
+        profile: profile
+      },
+      coordinates: {
+        x: e.clientX,
+        y: e.clientY
+      }
+    });
+  }
+  handleClickOutsideProfile(e) {
+    console.log(this.state.showProfile);
+    if (!e.target.closest(".Profile") && this.state.showProfile.show) {
+      this.setState({
+        showProfile: {
+          show: false,
+          profile: ""
+        }
+      });
+    }
+  }
   render() {
 
     let chats = _.map(this.state.users, (v,i) => {
-      return <Chat
-        key={"Chat--" + i}
-        user={this.state.users[i]}
-        chatee={i === this.state.users.length - 1 ? this.state.users[0] : this.state.users[i + 1]}
-        conversation={this.state.conversation}
-        updateConversation={this.updateConversation}
-        updateTyping={this.updateTyping}/>
+      return (
+        <Col key={"Col-Chat--" + i} xs={12} sm={12} md={6} lg={6}>
+          <Chat
+            key={"Chat--" + i}
+            user={this.state.users[i]}
+            chatee={i === this.state.users.length - 1 ? this.state.users[0] : this.state.users[i + 1]}
+            conversation={this.state.conversation}
+            updateConversation={this.updateConversation}
+            updateTyping={this.updateTyping}
+            showProfile={this.state.showProfile}
+            toggleProfile={this.toggleProfile}
+            coordinates={this.state.coordinates}/>
+        </Col>);
     });
 
     return (
-      <div className="Conversation">
-        {chats}
+      <div className="Conversation" onClick={(e)=>{this.handleClickOutsideProfile(e)}}>
+        <Grid fluid>
+          <Row>
+            {chats}
+          </Row>
+        </Grid>
       </div>
     );
   }
