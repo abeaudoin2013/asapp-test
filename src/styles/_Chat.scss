@@ -23,6 +23,7 @@
       }
       .-Avatar {
         cursor: pointer;
+        height: 100px;
         @include border-radius(5px);
       }
       .About {

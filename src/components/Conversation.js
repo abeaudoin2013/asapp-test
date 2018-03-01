@@ -44,7 +44,6 @@ class Conversation extends Component {
 
   }
   toggleProfile(e, profile) {
-    console.log("toggle prof");
     this.setState({
       showProfile: {
         show: !this.state.showProfile.show,
@@ -57,7 +56,6 @@ class Conversation extends Component {
     });
   }
   handleClickOutsideProfile(e) {
-    console.log(this.state.showProfile);
     if (!e.target.closest(".Profile") && this.state.showProfile.show) {
       this.setState({
         showProfile: {

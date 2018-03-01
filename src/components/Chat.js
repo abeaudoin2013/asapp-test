@@ -66,7 +66,7 @@ class Chat extends Component {
             </Row>
             <Row>
               <Col xs={3} sm={3} md={3} lg={3}>
-                <img src={this.props.chatee.avatar} className={"-Avatar"} width={"100%"} onClick={(e) => {this.props.toggleProfile(e, this.props.chatee)}} alt={this.props.chatee.userName}/>
+                <div style={{background: 'url(' + this.props.chatee.avatar + ') no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}} className={"-Avatar"} width={"100%"} onClick={(e) => {this.props.toggleProfile(e, this.props.chatee)}} alt={this.props.chatee.userName}/>
               </Col>
               <Col xs={9} sm={9} md={9} lg={9}>
                 <p>You are chatting with . . .</p>
