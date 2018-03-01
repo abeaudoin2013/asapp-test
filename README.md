@@ -19,3 +19,5 @@ Run npm start.
 ```
 npm start
 ```
+
+You will then be in an extremely engaging conversation between Rob Thomas and Laura Dern!
