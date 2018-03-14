@@ -8,7 +8,7 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.attachedImage = "";
+    this.state.attachedImagePreview = "";
 
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -46,9 +46,8 @@ class Chat extends Component {
 
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = function () {
-      console.log(reader.result);
       self.setState({
-        attachedImage: reader.result
+        attachedImagePreview: reader.result
       });
     };
     reader.onerror = function (error) {
@@ -71,6 +70,12 @@ class Chat extends Component {
     if (this.props.chatee.isTyping) {
       isTyping = this.props.chatee.userName + " is typing . . .";
     }
+
+    let attachedImagePreview = (
+      <div className="AttachImage-preview">
+        <img src={this.state.attachedImagePreview} width={"100%"} className={"AttachImage-preview-img"} alt="attached-image"/>
+      </div>
+    );
 
     return (
       <div className="Chat">
@@ -103,7 +108,7 @@ class Chat extends Component {
           <input type="text" className={"Input"} placeholder={"Message " + this.props.chatee.userName} onKeyUp={(e)=>{this.handleKeyUp(e)}}/>
           <div className="AttachImage">
             <input type="file" className={"AttachImage-Input"} onChange={this.attachImage}/>
-            <img src={this.state.attachedImage} width={"100%"} className={"AttachImage-attached"} alt="attached-image"/>
+            {this.state.attachedImagePreview !== "" ? attachedImagePreview : ""}
           </div>
 
           <p>{isTyping}</p>

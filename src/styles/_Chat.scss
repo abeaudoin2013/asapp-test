@@ -54,8 +54,10 @@
     }
     .AttachImage {
       width:100%;
-      img {
+      .AttachImage-preview {
         display: block;
+        max-width: 300px;
+        width: 100%;
       }
     }
   }
