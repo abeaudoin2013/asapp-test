@@ -8,9 +8,11 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.state.attachedImage = "";
 
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.attachImage = this.attachImage.bind(this);
 
   }
   handleKeyUp(e) {
@@ -37,6 +39,22 @@ class Chat extends Component {
         this.props.updateTyping(b);
       }
     }
+  }
+  attachImage(e) {
+    const reader = new FileReader();
+    const self = this;
+
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = function () {
+      console.log(reader.result);
+      self.setState({
+        attachedImage: reader.result
+      });
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+
   }
 
   render() {
@@ -83,6 +101,10 @@ class Chat extends Component {
           {messages}
 
           <input type="text" className={"Input"} placeholder={"Message " + this.props.chatee.userName} onKeyUp={(e)=>{this.handleKeyUp(e)}}/>
+          <div className="AttachImage">
+            <input type="file" className={"AttachImage-Input"} onChange={this.attachImage}/>
+            <img src={this.state.attachedImage} width={"100%"} className={"AttachImage-attached"} alt="attached-image"/>
+          </div>
 
           <p>{isTyping}</p>
         </div>
