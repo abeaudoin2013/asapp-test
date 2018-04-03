@@ -1,11 +1,11 @@
-Hi there welcome to the my React chat app. I built it for ASAPP.
+Hi there welcome to the my React chat app.
 
 It's pretty easy to get started.
 
 Just clone the app.
 
 ```
-git clone git@github.com:abeaudoin2013/asapp-test.git
+git clone git@github.com:abeaudoin2013/react-chat-app.git
 ```
 
 Install npm.
