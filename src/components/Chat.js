@@ -13,6 +13,7 @@ class Chat extends Component {
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.attachImage = this.attachImage.bind(this);
+    this.deleteAttachedImage = this.deleteAttachedImage.bind(this);
 
   }
   handleKeyUp(e) {
@@ -49,16 +50,26 @@ class Chat extends Component {
     const reader = new FileReader();
     const self = this;
 
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = function () {
-      self.setState({
-        attachedImagePreview: reader.result
-      });
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
+  
+    if (e.target.files[0] !== undefined) {
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = function () {
+        self.setState({
+          attachedImagePreview: reader.result
+        });
+      };
+      reader.onerror = function (error) {
+        console.log('Error: ', error);
+      };
+    }  
 
+  }
+  deleteAttachedImage(e) {
+    e.preventDefault();
+    document.getElementById("image-upload-" + this.props.user.Id).value = "";
+    this.setState({
+      attachedImagePreview: ""
+    });
   }
 
   render() {
@@ -78,6 +89,7 @@ class Chat extends Component {
 
     let attachedImagePreview = (
       <div className="AttachImage-preview">
+        <div className={"AttachImage-close"} onClick={(e) => {this.deleteAttachedImage(e)}}>X</div>
         <img src={this.state.attachedImagePreview} width={"100%"} className={"AttachImage-preview-img"} alt="attached"/>
       </div>
     );
@@ -94,7 +106,7 @@ class Chat extends Component {
             </Row>
             <Row>
               <Col xs={3} sm={3} md={3} lg={3}>
-                <div 
+                <div
                   style={
                     {background: 'url(' + this.props.chatee.avatar + ') no-repeat', 
                     backgroundSize: 'cover', backgroundPosition: 'center'}

@@ -54,6 +54,20 @@
     }
     .AttachImage {
       width:100%;
+      .AttachImage-close {
+        float: right;
+        background-color: #ffffff;
+        color: #000000;
+        width: 15px;
+        height: 15px;
+        border-radius: 8px;
+        top: 20px;
+        right: 5px;
+        position: relative;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+      }
       .AttachImage-preview {
         display: block;
         max-width: 300px;
