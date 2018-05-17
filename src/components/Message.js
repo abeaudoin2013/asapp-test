@@ -13,10 +13,15 @@ class Message extends Component {
 
               <div className={"Content item"}>
                 <div className="--sender">
-                  <span className={"UserName item"} onClick={(e)=>{this.props.toggleProfile(e, this.props.message.sender)}}>{this.props.message.sender.userName}</span>
+                  <span 
+                    className={"UserName item"} 
+                    onClick={(e)=>{this.props.toggleProfile(e, this.props.message.sender)}}>{this.props.message.sender.userName}</span>
                   <span className={"Time item"}><Moment format={"h:mm a"}>{this.props.message.date}</Moment></span>
                 </div>
-                <p className="--message">{this.props.message.text}</p>
+                <p className="--message">
+                  {this.props.message.image ? <img src={this.props.message.image} width={"100%"} alt={"attached-message"}/> : ""}
+                  {this.props.message.text}
+                </p>
               </div>
 
             </div>

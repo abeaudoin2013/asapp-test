@@ -52,6 +52,12 @@
       box-sizing: border-box;
       outline: none;
       position: relative; }
+    .Chat .--container .AttachImage {
+      width: 100%; }
+      .Chat .--container .AttachImage .AttachImage-preview {
+        display: block;
+        max-width: 300px;
+        width: 100%; }
 
 .Message {
   margin: 0 0 15px 0;

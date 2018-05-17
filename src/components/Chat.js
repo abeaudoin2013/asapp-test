@@ -29,9 +29,14 @@ class Chat extends Component {
         c.sender = this.props.user;
         c.receiver = this.props.chatee;
         c.date = new Date();
+        c.image = this.state.attachedImagePreview;
         e.target.value = "";
+        document.getElementById("image-upload-" + c.sender.Id).value = "";
         this.props.updateConversation(c);
         this.props.updateTyping(b);
+        this.setState({
+          attachedImagePreview: ""
+        });
       }
 
     } else {
@@ -73,7 +78,7 @@ class Chat extends Component {
 
     let attachedImagePreview = (
       <div className="AttachImage-preview">
-        <img src={this.state.attachedImagePreview} width={"100%"} className={"AttachImage-preview-img"} alt="attached-image"/>
+        <img src={this.state.attachedImagePreview} width={"100%"} className={"AttachImage-preview-img"} alt="attached"/>
       </div>
     );
 
@@ -89,12 +94,26 @@ class Chat extends Component {
             </Row>
             <Row>
               <Col xs={3} sm={3} md={3} lg={3}>
-                <div style={{background: 'url(' + this.props.chatee.avatar + ') no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}} className={"-Avatar"} width={"100%"} onClick={(e) => {this.props.toggleProfile(e, this.props.chatee)}} alt={this.props.chatee.userName}/>
+                <div 
+                  style={
+                    {background: 'url(' + this.props.chatee.avatar + ') no-repeat', 
+                    backgroundSize: 'cover', backgroundPosition: 'center'}
+                  } 
+                  className={"-Avatar"} 
+                  width={"100%"} 
+                  onClick={(e) => {
+                    this.props.toggleProfile(e, this.props.chatee)}
+                  } 
+                  alt={this.props.chatee.userName}/>
               </Col>
               <Col xs={9} sm={9} md={9} lg={9}>
                 <p>You are chatting with . . .</p>
                 <div className={"About"}>
-                  <div className={"-UserName"} onClick={(e) => {this.props.toggleProfile(e, this.props.chatee)}}>{this.props.chatee.userName}</div>
+                  <div 
+                    className={"-UserName"} 
+                    onClick={(e) => {
+                      this.props.toggleProfile(e, this.props.chatee)}
+                    }>{this.props.chatee.userName}</div>
                   <div className={"-FullName"}><span className={"-First name"}>{this.props.chatee.firstName}</span> <span className={"-Last name"}>{this.props.chatee.lastName}</span></div>
                 </div>
 
@@ -107,7 +126,7 @@ class Chat extends Component {
 
           <input type="text" className={"Input"} placeholder={"Message " + this.props.chatee.userName} onKeyUp={(e)=>{this.handleKeyUp(e)}}/>
           <div className="AttachImage">
-            <input type="file" className={"AttachImage-Input"} onChange={this.attachImage}/>
+            <input type="file" id={"image-upload-" + this.props.user.Id} className={"AttachImage-Input"} onChange={this.attachImage}/>
             {this.state.attachedImagePreview !== "" ? attachedImagePreview : ""}
           </div>
 
