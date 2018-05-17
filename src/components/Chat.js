@@ -9,12 +9,35 @@ class Chat extends Component {
     super(props);
     this.state = {};
     this.state.attachedImagePreview = "";
-
+    this.state.randomGif = "";
+    this.state.randomGifSlug = "";
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.attachImage = this.attachImage.bind(this);
     this.deleteAttachedImage = this.deleteAttachedImage.bind(this);
 
+  }
+  componentWillMount() {
+    const self = this,
+          n = Math.floor(Math.random() * (4 - 0 + 1) ) + 0;
+
+          console.log(this.props.user);
+
+    fetch('http://api.giphy.com/v1/gifs/search?q=' + this.props.user.firstName + '+' + this.props.user.lastName + '&api_key=NF2IhcnuxwpvEe5huzaBIPErDtFN7mbK&limit=5')
+    .then(function(response) {
+      if(response.ok) {
+        response.json().then(function(json) {
+          const g = json.data[n];
+          self.setState({
+            randomGif: g.images.fixed_height.url,
+            randomGifWidth: g.images.fixed_height.width,
+            randomGifSlug: g.images.slug
+          });
+        });
+      } else {
+        console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);
+      }
+    });
   }
   handleKeyUp(e) {
     let a = e.target.value, b = this.props.user, c={};
@@ -121,6 +144,7 @@ class Chat extends Component {
               <Col xs={9} sm={9} md={9} lg={9}>
                 <p>You are chatting with . . .</p>
                 <div className={"About"}>
+                  {this.state.randomGif ? <img src={this.state.randomGif} alt={this.state.randomGifSlug} width={this.state.randomGifWidth} /> : ""}
                   <div 
                     className={"-UserName"} 
                     onClick={(e) => {
