@@ -3,6 +3,10 @@ import { Row, Col } from 'react-flexbox-grid';
 import Moment from 'react-moment';
 
 class Message extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
   render() {
     return (
       <Row>
@@ -19,6 +23,7 @@ class Message extends Component {
                   <span className={"Time item"}><Moment format={"h:mm a"}>{this.props.message.date}</Moment></span>
                 </div>
                 <p className="--message">
+                  {this.props.message.gif ? <img src={this.props.message.gif} width={"100%"}/> : ""}
                   {this.props.message.image ? <img src={this.props.message.image} width={"100%"} alt={"attached-message"}/> : ""}
                   {this.props.message.text}
                 </p>

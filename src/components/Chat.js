@@ -9,29 +9,39 @@ class Chat extends Component {
     super(props);
     this.state = {};
     this.state.attachedImagePreview = "";
-    this.state.randomGif = "";
-    this.state.randomGifSlug = "";
+    // this.state.randomGif = "";
+    // this.state.randomGifSlug = "";
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.attachImage = this.attachImage.bind(this);
     this.deleteAttachedImage = this.deleteAttachedImage.bind(this);
+    this.returnGif = this.returnGif.bind(this);
 
   }
   componentWillMount() {
-    const self = this,
-          n = Math.floor(Math.random() * (4 - 0 + 1) ) + 0;
+    
+  }
+  returnGif(arg, arg2) {
+    const n = Math.floor(Math.random() * (4 - 0 + 1) ) + 0, self = this;
+    const queryReducer =  (accumulator, currentValue, index, array) => index === array.length - 1 ? accumulator + currentValue + '&api_key=NF2IhcnuxwpvEe5huzaBIPErDtFN7mbK&limit=5' :  accumulator + currentValue + '+';
+    let queryString = arg.length > 1 ? arg.reduce(queryReducer, 'http://api.giphy.com/v1/gifs/search?q=') : 'http://api.giphy.com/v1/gifs/search?q=' + arg[0] + '&api_key=NF2IhcnuxwpvEe5huzaBIPErDtFN7mbK&limit=5';
 
-          console.log(this.props.user);
-
-    fetch('http://api.giphy.com/v1/gifs/search?q=' + this.props.user.firstName + '+' + this.props.user.lastName + '&api_key=NF2IhcnuxwpvEe5huzaBIPErDtFN7mbK&limit=5')
+    fetch(queryString)
     .then(function(response) {
       if(response.ok) {
         response.json().then(function(json) {
-          const g = json.data[n];
+          let g = json.data[n],
+              h= {
+                gif: g.images.fixed_height.url,
+                gifWidth: g.images.fixed_height.width,
+                gifSlug: g.images.slug
+              };
+              console.log(g);
+          const i = _.extend(h, arg2);
+          self.props.updateConversation(i);
+          self.props.updateTyping(self.props.user);
           self.setState({
-            randomGif: g.images.fixed_height.url,
-            randomGifWidth: g.images.fixed_height.width,
-            randomGifSlug: g.images.slug
+            attachedImagePreview: ""
           });
         });
       } else {
@@ -49,18 +59,55 @@ class Chat extends Component {
       }
 
       if (e.key === "Enter") {
-        c.text = a;
-        c.sender = this.props.user;
-        c.receiver = this.props.chatee;
-        c.date = new Date();
-        c.image = this.state.attachedImagePreview;
-        e.target.value = "";
-        document.getElementById("image-upload-" + c.sender.Id).value = "";
-        this.props.updateConversation(c);
-        this.props.updateTyping(b);
-        this.setState({
-          attachedImagePreview: ""
+        
+        let d = a.split(" "),
+        wordsToSendToGif = [],
+        message = d.map(word => {
+          if (word.includes("_")) {
+            let f = word.split("_");
+            if (f.length === 3) {
+              wordsToSendToGif.push(f[1]);
+              return f[1];
+            }
+          } else {
+            return word;
+          }
         });
+
+        let g = "";
+
+        g = message.reduce((acc, word) => {
+          return acc + " " + word;
+        });
+
+        if (wordsToSendToGif.length > 0) {
+          console.log("words to send to gif");
+          c.text = g;
+          c.sender = this.props.user;
+          c.receiver = this.props.chatee;
+          c.date = new Date();
+          c.image = this.state.attachedImagePreview;
+          e.target.value = "";
+          document.getElementById("image-upload-" + c.sender.Id).value = "";
+          this.returnGif(wordsToSendToGif, c);
+        } else {
+          console.log("no words to send to gif");
+          c.text = a;
+          c.sender = this.props.user;
+          c.receiver = this.props.chatee;
+          c.date = new Date();
+          c.image = this.state.attachedImagePreview;
+          e.target.value = "";
+          document.getElementById("image-upload-" + c.sender.Id).value = "";
+          this.props.updateConversation(c);
+          this.props.updateTyping(b);
+          this.setState({
+            attachedImagePreview: ""
+          });
+        }
+        
+
+
       }
 
     } else {
@@ -165,6 +212,7 @@ class Chat extends Component {
             <input type="file" id={"image-upload-" + this.props.user.Id} className={"AttachImage-Input"} onChange={this.attachImage}/>
             {this.state.attachedImagePreview !== "" ? attachedImagePreview : ""}
           </div>
+          <p className={"Giphy-thing"}>Send a gif by adding underscores like _this_</p>
 
           <p>{isTyping}</p>
         </div>

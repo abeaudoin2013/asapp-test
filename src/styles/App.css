@@ -71,6 +71,8 @@
         display: block;
         max-width: 300px;
         width: 100%; }
+    .Chat .--container .Giphy-thing {
+      font-size: 10px; }
 
 .Message {
   margin: 0 0 15px 0;
